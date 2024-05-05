@@ -119,14 +119,11 @@ public class UserController {
                 return ApiRestResponse.error(ImoocMallExceptionEnum.EMAIL_ALREADY_BEEN_REGISTERED);
             } else {
                 String verificationCode = userService.getVerification();
-//                 boolean result = emailService.saveEmailTorRedis(emailAddress, verificationCode);
-//                 if (result){
+
                      emailService.sendSimpleMessage(emailAddress, Constant.EMAIL_SUBJECT,
                              "欢迎注册,您的验证码是:"+verificationCode);
                      return ApiRestResponse.success();
-//                 }else {
-//                     return ApiRestResponse.error(ImoocMallExceptionEnum.EMAIL_EXISTED);
-//                 }
+
             }
         } else {
             return ApiRestResponse.error(ImoocMallExceptionEnum.WRONG_EMAIL);

@@ -29,10 +29,7 @@ public class EmailServiceImpl implements EmailService {
 
     @Override
     public boolean saveEmailTorRedis(String emailAddress, String verificationCode) {
-        //Redisson.create()返回的client默认是我们本机的Redis
          RedissonClient redissonClient = Redisson.create();
-         //一般的储存是运用了key:value的形式，而这中是表示emailAddress是key值
-         //redissonClient.getBucket(emailAddress)，表示获得key所代表的Value值
         RBucket<String> bucket = redissonClient.getBucket(emailAddress);
          boolean exists = bucket.isExists();
         if (!exists) {

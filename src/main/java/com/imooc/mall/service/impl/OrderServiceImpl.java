@@ -87,9 +87,6 @@ public class OrderServiceImpl implements OrderService{
         if (order == null) {
             throw new ImoocMallException(ImoocMallExceptionEnum.NOT_ORDER);
         }
-//         ServletRequestAttributes requestAttributes =
-//                 (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-//         HttpServletRequest request = requestAttributes.getRequest();
          String address= ui;
          String payUrl="http://"+address+"/user"+"/pay?orderNo="+orderNo;
         if (order.getOrderStatus().equals(Constant.OrderStatus.NOT_PAY.getStatusCode())){

@@ -21,12 +21,6 @@ public class Constant {
     public static final Integer IMAGE_SIZE = 400;
     public static final String WATER_MARK_JPG = "waterMark.jpg";
     public static final Float IMAGE_OPACITY = 0.5f;
-//    public static Set<String> JWT_TOKEN_SET= Sets.newHashSet("jwt_token");
-
-//    @Value("${file.upload.dir}")
-//    public void setFileUploadDir(String fileUploadDir) {
-//        FILE_UPLOAD_DIR = fileUploadDir;
-//    }
 
     public static String FILE_UPLOAD_DIR="D:/fileImage/";
 

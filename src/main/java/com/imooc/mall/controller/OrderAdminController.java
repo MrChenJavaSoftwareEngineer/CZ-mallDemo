@@ -48,17 +48,6 @@ public class OrderAdminController {
         return ApiRestResponse.success();
     }
 
-    //后台进行统计一段时间内的订单数
-    //注意时区的问题：
-    /*
-    1.排查mysql的时区的问题，通过select now()
-    2.排查SpringBoot时区的问题，通过MallApplication中的man方法中书写System.out.println(TimeZone.getDefault());
-    3.jackson转换时区，通过在properties文件中进行配置属性，如spring.jackson.time-zone=Asia/Shanghai
-    注意：地址发生变化时(会话进行变化时，会话进行更新和我们这些类和资源进行更新是不一样的)，进行热加载时只会一定次加载的为准，
-    若要进行跟新则要重新进行运行。而代码区发生变化时，只需要更新即可，
-    不用重新运行。初步是这么认为的，具体的还是要看IDEAD的debug的api文档，进行具体的了解。
-     */
-
     @ApiOperation("后台进行统计一段时间内的订单数")
     @PostMapping("/order/statistics")
     public ApiRestResponse statistics(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd")Date start,

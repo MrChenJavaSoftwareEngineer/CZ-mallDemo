@@ -74,25 +74,11 @@ public class CategoryServiceImpl implements CategoryService {
     private void recursivelyFindCategories(List<CategoryVO> categoryVOList,
                                            Integer parentId) {
         for (Category category : categoryMapper.selectCategoriesByParentId(parentId)) {
-//            if (category == null) {
-//                return;
-//            }
             CategoryVO categoryVO = new CategoryVO();
             BeanUtils.copyProperties(category,categoryVO);
             categoryVOList.add(categoryVO);
             recursivelyFindCategories(categoryVO.getChildCategory(),categoryVO.getId());
         }
-//        //递归获取所有子类别，并组合成为一个“目录树”
-//        List<Category> categoryList = categoryMapper.selectCategoriesByParentId(parentId);
-//        if (!CollectionUtils.isEmpty(categoryList)) {
-//            for (int i = 0; i < categoryList.size(); i++) {
-//                Category category = categoryList.get(i);
-//                CategoryVO categoryVO = new CategoryVO();
-//                BeanUtils.copyProperties(category, categoryVO);
-//                categoryVOList.add(categoryVO);
-//                recursivelyFindCategories(categoryVO.getChildCategory(), categoryVO.getId());
-//            }
-//        }
     }
 
 }

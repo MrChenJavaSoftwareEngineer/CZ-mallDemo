@@ -66,18 +66,6 @@ public class ProductAdminController {
 
 
 
-//    //获得新的URI,便于重写URL
-//    public URI getHost(URI uri) {
-//        URI effectUri;
-//        try {
-//            effectUri = new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(),
-//                    null, null, null);
-//        }  catch (URISyntaxException e) {
-//          effectUri=null;
-//        }
-//        return effectUri;
-//    }
-
     //商品的删除
     @ApiOperation("商品的删除")
     @PostMapping("/admin/product/delete")

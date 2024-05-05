@@ -65,30 +65,12 @@ public class FileUploadServiceImpl implements FileUploadService {
         File fileDirectory = new File(Constant.FILE_UPLOAD_DIR);
         File destFile = new File(Constant.FILE_UPLOAD_DIR + newFile);
         createFile(fileDirectory, destFile);
-        /*
-        把文件转移到新创建的文件中
-        水印只能在已有的图片进行水印的打印
-         */
         file.transferTo(destFile);
-        //处理图片,并且把图片文件转移到新创建的图片文件中
-        /*
-        watermark表示打水印，
-        第一个表示水印打在图片的那个的位置上
-        第二个表示水印的地址
-        ImageIO.read表示水印的读取
-        第一个表示文件的路径
-        第二个表示水印的透明度
-        toFile
-        表示对原来的图进行覆盖
-         */
         Thumbnails.of(destFile).size(Constant.IMAGE_SIZE,Constant.IMAGE_SIZE)
                 .watermark(Positions.BOTTOM_RIGHT, ImageIO.read
                         (new File(Constant.FILE_UPLOAD_DIR+Constant.WATER_MARK_JPG)
                         ),Constant.IMAGE_OPACITY).toFile(new File(Constant.FILE_UPLOAD_DIR
                         +newFile));
-//        //把文件转移到新创建的文件中
-//        file.transferTo(destFile);
-        //返回API
         String address=ui;
         String result = "http://" + address + "/images/" + newFile;
         return result;
